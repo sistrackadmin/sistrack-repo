@@ -25,7 +25,7 @@ SECRET_KEY = 'i#yc6b8g79v38#+9x-=%2c%0hq#5n(^*b*@il-&21%j%6j)t7@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['52.55.185.252', 'sistrack.ca']
+ALLOWED_HOSTS = ['52.55.185.252', 'sistrack.ca','127.0.0.1']
 
 
 # Application definition
