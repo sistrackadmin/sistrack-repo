@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>All Devices Tested</h1>
+
+    {% if testinstance_list %}
+    <ul>
+
+      {% for testinst in testinstance_list %}
+      <li class="{% if testinst.is_overdue %}text-danger{% endif %}">
+        <a href="{% url 'device-detail' testinst.device.pk %}">{{testinst.device.tagnumber}}</a> ({{ testinst.test_date }}) -  {{ testinst.inspector.last_name}}, {{ testinst.inspector.first_name}}
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>There are no devices tested.</p>
+    {% endif %}
+{% endblock %}

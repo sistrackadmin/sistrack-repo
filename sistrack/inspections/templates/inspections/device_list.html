@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>SIS Device List</h1>
+{% if device_list %}
+<ul>
+
+{% for device in device_list %}
+
+<li><a href="{{ device.get_absolute_url }}">{{ device.tagnumber }}</a>  - {{ device.description }}</li>
+
+{% endfor %}
+
+</ul>
+{% else %}
+<p>no devices</p>
+{% endif %}
+{% endblock %}

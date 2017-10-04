@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>SisTrack Compliance Tracking Portal</h1>
+
+<p>Total number of devices = <strong>{{ devcount }}</strong></p>
+<p>Devices tested this month = <strong>{{ testedthismonth }}</strong></p>
+<p>Devices tested this year = <strong>{{ testedthisyear }}</strong></p>
+<p>Number of failed tests = <strong>{{ failedcount }}</strong></p>
+
+<p>You have visited this page {{ num_visits }} {% if num_visits == 1 %} time {% else %} times {% endif %}</p>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h2>{{ device.tagnumber }}</h2>
+<p>{{ device.description }}</p>
+<hr>
+
+<p>Area: {{ device.location.area }} / Unit: {{ device.location }}</p>
+<p>Device type: {{ device.devicetype }}</p><br>
+
+<h3>Device Test History</h3>
+<hr>
+{% if device.testinstance_set.all %}
+
+
+{% for device in device.testinstance_set.all %}
+{{ device.test_date }}<p>Tested by: <strong>{{ device.inspector.last_name }}, {{ device.inspector.first_name }}</strong> ({{ device.get_result_display }})</p><hr>
+
+{% endfor %}
+
+{% else %}
+<p>No test records found</p>
+{% endif %}
+{% endblock %}
