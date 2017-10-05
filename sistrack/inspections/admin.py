@@ -17,6 +17,7 @@ class LocationAdmin(admin.ModelAdmin):
 class DeviceAdmin(admin.ModelAdmin):
     list_display = ('location','tagnumber','description')
     list_filter = ('location','devicetype')
+    search_fields = ['tagnumber', 'description']
 
 @admin.register(Document)
 class DocumentAdmin(admin.ModelAdmin):
