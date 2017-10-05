@@ -1,17 +1,22 @@
 from django.shortcuts import render
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from .models import Location, Device, DeviceType, TestInstance
+from .models import Location, Device, DeviceType, TestInstance, Document, Interlock, Ipl
 # Create your views here.
 
 def index(request):
     devcount = Device.objects.all().count()
+    ipl_count = Ipl.objects.all().count()
+    interlock_count = Interlock.objects.all().count()
+    doc_count = Document.objects.all().count()
+    location_count = Location.objects.all().count()
     failedcount = TestInstance.objects.filter(result='f').count()
-    testedthismonth = TestInstance.objects.filter(test_date__month=9).count()
+    test_count = TestInstance.objects.filter(test_date__year=2017).count()
+    testedthismonth = TestInstance.objects.all().count()
     testedthisyear = TestInstance.objects.filter(test_date__year=2017).count()
     num_visits = request.session.get('num_visits', 0)
     request.session['num_visits'] = num_visits+1
-    return render(request, 'index.html', {'devcount':devcount, 'failedcount':failedcount, 'testedthismonth':testedthismonth, 'testedthisyear':testedthisyear, 'num_visits':num_visits})
+    return render(request, 'index.html', {'devcount':devcount, 'failedcount':failedcount, 'testedthismonth':testedthismonth, 'testedthisyear':testedthisyear, 'num_visits':num_visits, 'ipl_count':ipl_count, 'interlock_count':interlock_count, 'doc_count':doc_count, 'location_count':location_count, 'test_count':test_count})
 
 class DeviceListView(generic.ListView):
     model = Device
