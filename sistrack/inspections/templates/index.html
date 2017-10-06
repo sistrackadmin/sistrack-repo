@@ -1,18 +1,49 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-<h1>SisTrack Compliance Tracking Portal</h1>
+<div class="container-fluid">
 
-<p>Number of safety devices = <strong>{{ devcount }}</strong></p>
-<p>Number of IPL's = <strong>{{ ipl_count }}</strong></p>
-<p>Number of documents = <strong>{{ doc_count }}</strong></p>
-<p>Number of interlocks = <strong>{{ interlock_count }}</strong></p>
-<p>Number of locations = <strong>{{ location_count }}</strong></p>
-<p>Number of inspection records = <strong>{{ test_count }}</strong></p>
-<p>Devices tested this month = <strong>{{ testedthismonth }}</strong></p>
-<p>Devices tested this year = <strong>{{ testedthisyear }}</strong></p>
-<p>Number of failed tests = <strong>{{ failedcount }}</strong></p>
-
+  <div class="row">
+    <div class="col-4">
+      <div class="alert alert-primary" role="alert" style="min-height:200px;">
+        <h4><strong>{{ interlock_count }}</strong>  Interlocks</h4>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="alert alert-secondary" role="alert" style="min-height:200px;">
+        <h4><strong>{{ location_count }}</strong>  Locations</h4>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="alert alert-success" role="alert" style="min-height:200px;">
+        <h4><strong>{{ test_count }}</strong>  Inspection records</h4>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <div class="alert alert-primary" role="alert" style="min-height:200px;">
+        <h4><strong>{{ devcount }}</strong>  Safety devices</h4>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="alert alert-secondary" role="alert" style="min-height:200px;">
+        <h4><strong>{{ ipl_count }}</strong>  IPL's</h4>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="alert alert-success" role="alert" style="min-height:200px;">
+        <h4><strong>{{ doc_count }}</strong>  PSI Documents</h4>
+      </div>
+      <br>
+    </div><hr>
+  </div>
+  <div class="alert alert-dark" role="alert">
+    <p>Devices tested this month = <strong>{{ testedthismonth }}</strong></p>
+    <p>Devices tested this year = <strong>{{ testedthisyear }}</strong></p>
+    <p>Number of failed tests = <strong>{{ failedcount }}</strong></p>
+  </div>
+</div>
 
 <p>You have visited this page {{ num_visits }} {% if num_visits == 1 %} time {% else %} times {% endif %}</p>
 {% endblock %}
